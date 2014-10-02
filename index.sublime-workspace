@@ -1,0 +1,573 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"margin-",
+				"margin-bottom"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"announ",
+				"announcement_id"
+			],
+			[
+				"annou",
+				"announcement_id"
+			],
+			[
+				"course",
+				"course_id"
+			],
+			[
+				"sele",
+				"selectedCampaign"
+			],
+			[
+				"pxl",
+				"pxlAdminService"
+			],
+			[
+				"px",
+				"pxlAdminService"
+			],
+			[
+				"ng-cl",
+				"ng-click	AngularJS"
+			],
+			[
+				"min-",
+				"min-height"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"http",
+				"$httpBackend	AngularJS"
+			],
+			[
+				"stat",
+				"stateParams"
+			],
+			[
+				"billing",
+				"billingIndex"
+			],
+			[
+				"campa",
+				"campaignCreatives"
+			],
+			[
+				"cam",
+				"campaignCreatives"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "application/controllers/announcements.php",
+			"settings":
+			{
+				"buffer_size": 2674,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/courseware.php",
+			"settings":
+			{
+				"buffer_size": 332,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/courses.php",
+			"settings":
+			{
+				"buffer_size": 2617,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/courses/view.php",
+			"settings":
+			{
+				"buffer_size": 3573,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/core/MY_Model.php",
+			"settings":
+			{
+				"buffer_size": 17679,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/css/app.css",
+			"settings":
+			{
+				"buffer_size": 12186,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/models/announcement_model.php",
+			"settings":
+			{
+				"buffer_size": 916,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 74.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 475.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/HCM",
+		"/var/www/HCM/application",
+		"/var/www/HCM/application/controllers",
+		"/var/www/HCM/application/core",
+		"/var/www/HCM/application/errors",
+		"/var/www/HCM/application/models",
+		"/var/www/HCM/application/views",
+		"/var/www/HCM/application/views/announcements",
+		"/var/www/HCM/application/views/courses",
+		"/var/www/HCM/assets",
+		"/var/www/HCM/assets/css"
+	],
+	"file_history":
+	[
+		"/home/chidiebere/Documents/AndelaProjects/pxladmin-redesign/app/css/app.css",
+		"/home/chidiebere/Documents/AndelaProjects/pxladmin-redesign/README.md",
+		"/home/chidiebere/Documents/AndelaProjects/APIs/InstagramA/index.html",
+		"/home/chidiebere/Documents/AndelaProjects/APIs/InstagramA/js/app.js",
+		"/home/chidiebere/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/chidiebere/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"delete",
+			"sfdcId",
+			"editAccount",
+			"zipCode",
+			"phoneNumber",
+			"lastName",
+			"email",
+			"\">\n",
+			"firstName",
+			"\\d+\\. ",
+			"email",
+			"uploadForm",
+			"menu",
+			"btn",
+			"btn-success",
+			"line"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"landingUrl",
+			"editCampaign",
+			"zip",
+			"contactPhone",
+			"contactLast",
+			"contactEmail",
+			"contactFirst",
+			"",
+			"address2",
+			"editAccountForm"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "application/controllers/announcements.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2674,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2596,
+								2596
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/controllers/courseware.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 332,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								323,
+								323
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "application/controllers/courses.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/views/courses/view.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3573,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2598,
+								2598
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 801.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/core/MY_Model.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8846,
+								8846
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 5549.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "assets/css/app.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12186,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11456,
+								11456
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 9383.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "application/models/announcement_model.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 916,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								263,
+								263
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "index.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 259.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

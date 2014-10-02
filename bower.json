@@ -1,0 +1,29 @@
+{
+  "name": "CI_BoilerPlate",
+  "version": "0.0.0",
+  "homepage": "paruto.com",
+  "authors": [
+    "Chidiebere <chidiebere.nnadi@gmail.com>"
+  ],
+  "description": "Paruto App design",
+  "main": "index.php",
+  "keywords": [
+    "Articles",
+    "News",
+    "Sharing",
+    "Social",
+    "Reporting"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "foundation": "~5.4.4"
+  }
+}
