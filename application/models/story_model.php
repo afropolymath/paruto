@@ -1,7 +1,7 @@
 <?php
 
 class Story_model extends MY_Model {
-    /* Override methods */
+
     public function insert($story, $user_id) {
 		$this->form_validation->set_rules('headline', 'Headline', 'trim|required|min_length[3]|max_length[100]|xss_clean');
 		$this->form_validation->set_rules('story', 'News Content', 'trim|required|xss_clean');
@@ -15,6 +15,10 @@ class Story_model extends MY_Model {
     	} else {
     		return false;
     	}
+    }
+
+    public function search($query) {
+        // Todo: Implement search logic
     }
 }
 

@@ -2,7 +2,7 @@
 <?= form_open('stories/create', ['id' => 'create-story-form']); ?>
 <div class="form-create-errors hide"></div>
 <label for="headline" class="sr-label">Enter Headline</label>
-<input type="text" name="headline" value="<?= set_value('headline'); ?>" class="radius" id="headline" placeholder="Enter your headline"/>
+<input type="text" name="headline" value="<?= set_value('headline'); ?>" class="mt-form-control radius" id="headline" placeholder="Enter your headline"/>
 <div class="headline-error error-field hide"><ul></ul></div>
 <h2 class="sub-section-header">Location Information</h2>
 <label for="type">What state is this happening?</label>
@@ -57,13 +57,13 @@
 <!-- End Location Finder -->
 
 <h2 class="sub-section-header">Story Content</h2>
-<a href="#image-upload" class="media-buttons button small radius secondary">
+<a href="#image-upload" class="media-buttons button radius secondary icon-camera">
 	<div class="arrow-image"><div class="arrow-border"></div><div class="main-arrow"></div></div>
-	<i class="fi-photo"></i>Add an Image
+	Add an Image
 </a>
-<a href="#link-input" class="media-buttons button small radius secondary">
+<a href="#link-input" class="media-buttons button radius secondary icon-link">
 	<div class="arrow-image"><div class="arrow-border"></div><div class="main-arrow"></div></div>
-	<i class="fi-link"></i>Enter link
+	Enter link
 </a>
 <div class="media-selection">
 	<div id="image-upload">
@@ -76,8 +76,8 @@
 	</div>
 </div>
 <label for="story">Story Content</label>
-<textarea name="story" id="story"><?= set_value('content'); ?></textarea>
+<textarea name="story" id="story" class="cke-repl"><?= set_value('content'); ?></textarea>
 <div class="story-error error-field hide"><ul></ul></div>
 <label for="anonymous" style="margin-top:1em"><input type="checkbox" name="anonymous" id="anonymous"/> Create as anonymous</label>
-<button type="submit" class="button large radius" id="create-story" style="margin-top:1em">Publish Story</button>
+<button type="submit" class="button paruto large radius" id="create-story" style="margin-top:1em">Publish Story</button>
 <?= form_close(); ?>

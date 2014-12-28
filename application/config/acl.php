@@ -8,7 +8,12 @@
 
 $config['acl'] = [
     // Global Actions
-    [ 'auth/login' => 'Confirm', 'auth/register' => 'Register', 'auth/logout' => 'Logout', ],
+    [
+        'auth/login' => 'Confirm',
+        'auth/register' => 'Register',
+        'auth/logout' => 'Logout',
+        'stories/index'   => 'Stream',
+    ],
     // Administrator Specific Actions
     [
         'sample/url'   => 'Dashboard'

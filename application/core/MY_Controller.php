@@ -35,12 +35,12 @@ class MY_Controller extends CI_Controller
      * An arbitrary list of asides/partials to be loaded into
      * the layout. The key is the declared name, the value the file
      */
-    protected $asides = array('sidebar' => 'asides/sidebar');
+    protected $asides = array();
     
     /**
      * A list of models to be autoloaded
      */
-    protected $models = array('story');
+    protected $models = array('story', 'vote', 'profile');
     
     /**
      * A formatting string for the model autoloading feature.
@@ -74,6 +74,7 @@ class MY_Controller extends CI_Controller
             }
         }
 
+        date_default_timezone_set('Africa/Lagos');
             
     }
 
@@ -128,6 +129,14 @@ class MY_Controller extends CI_Controller
      */
     protected function _load_view()
     {
+        // Do we have any asides? Load them.
+        if (!empty($this->asides))
+        {
+            foreach ($this->asides as $name => $file)
+            {
+                $data['yield_'.$name] = $this->load->view($file, $this->data, TRUE);
+            }
+        }
 
         if($this->_is_ajax())
         {
@@ -152,7 +161,7 @@ class MY_Controller extends CI_Controller
                 }
 
                 $this->view = false;
-                
+
                 $this->output->set_content_type('application/json')->set_output(json_encode($this->data));
             }
         }
@@ -165,15 +174,6 @@ class MY_Controller extends CI_Controller
             
             // Load the view into $yield
             $data['yield'] = $this->load->view($view, $this->data, TRUE);
-            
-            // Do we have any asides? Load them.
-            if (!empty($this->asides))
-            {
-                foreach ($this->asides as $name => $file)
-                {
-                    $data['yield_'.$name] = $this->load->view($file, $this->data, TRUE);
-                }
-            }
             
             // Load in our existing data with the asides and view
             $data = array_merge($this->data, $data);

@@ -12,35 +12,35 @@
         <?= js_tag('lib/modernizr/modernizr.js'); ?>
     </head>
     <body >
+        <div id="application-message-parser" class="success hidden">Hello everyone. I'm a message</div>
         <input type="hidden" value="<?= site_url(); ?>" class="base-url"/>
         <div class="modal-overlay">
-            <p class="loading message"><?= img('assets/img/ajax_loader.gif'); ?> Loading..</p>
-            <p class="message"></p>
+            <p class="loading-message"><?= img('assets/img/ajax_loader.gif'); ?> Loading..</p>
         </div>
         <div class="overlay"></div>
         <section id="header">
-            <div class="row">
-                <div class="medium-6 columns">
-                    <?= img('assets/img/logo.png'); ?>
-                </div>
-                <div class="medium-6 columns">
-                    <ul class="header-nav">
-                        <li><?= anchor('stories', 'Stream'); ?></li>
-                        <li><?= anchor('users/dashboard', 'Dashboard'); ?></li>
-                        <li><?= anchor('stories/create', '<i class="fi-plus"></i> Create Story', ['class' => 'click-me']); ?></li>
-                    </ul>
-                </div>
+            <div class="medium-6 columns">
+                <?= img('assets/img/logo.png'); ?>
+            </div>
+            <div class="medium-6 columns">
+                <ul class="header-nav">
+                    <li><?= anchor('stories', 'Stream'); ?></li>
+                    <li><?= anchor('users/dashboard', 'Dashboard'); ?></li>
+                    <li><?= anchor('stories/create', '<i class="fi-plus"></i> Create Story', ['class' => 'click-me']); ?></li>
+                </ul>
             </div>
         </section>
         <section id="application-window">
-            <div class="row">
-                <div class="large-9 columns">
-                    <?= $yield; ?>
-                </div>
-                <div class="large-3 columns">
-                    <div class="side-bar"></div>
+            <div id="ajax-content" class="large-7 <?= !isset($yield_sidebar) ? "large-centered": "large-offset-1" ; ?> columns">
+                <?= $yield; ?>
+            </div>
+            <? if(isset($yield_sidebar)): ?>
+            <div id="ajax-sidebar" class="large-3 large-offset-1 columns">
+                <div class="side-bar">
+                    <?= $yield_sidebar; ?>
                 </div>
             </div>
+            <? endif; ?>
         </section>
         <section id="footer-section"></section>
 

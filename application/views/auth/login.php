@@ -1,4 +1,4 @@
-<h1>Login to account</h1>
+<h1 align="center">Login to account</h1>
 <div class="generic-form">
     <div class="row">
         <div class="large-10 large-centered columns">
