@@ -13,6 +13,9 @@
     </head>
     <body >
         <div id="application-message-parser" class="success hidden">Hello everyone. I'm a message</div>
+        <div id="confirm-modal" class="reveal-modal small" data-reveal>
+
+        </div>
         <input type="hidden" value="<?= site_url(); ?>" class="base-url"/>
         <div class="modal-overlay">
             <p class="loading-message"><?= img('assets/img/ajax_loader.gif'); ?> Loading..</p>
@@ -20,13 +23,25 @@
         <div class="overlay"></div>
         <section id="header">
             <div class="medium-6 columns">
-                <?= img('assets/img/logo.png'); ?>
+                <a href="/stories" style="text-decoration:none;"><?= img('assets/img/logo.png'); ?></a>
             </div>
             <div class="medium-6 columns">
                 <ul class="header-nav">
-                    <li><?= anchor('stories', 'Stream'); ?></li>
-                    <li><?= anchor('users/dashboard', 'Dashboard'); ?></li>
+                    <li class="active"><?= anchor('stories', 'Stream'); ?></li>
+                    <? if(isset($logged_in_user)): ?>
+                    <li>
+                        <?= anchor('users/dashboard', "Logged in as " . $logged_in_user->username . " &#x25BE;", ['data-dropdown' => 'drop', 'style' => 'padding-bottom: 7px;']); ?>
+                        <ul id="drop" class="tiny f-dropdown" data-dropdown-content>
+                            <li><?= anchor('users/dashboard', 'Dashboard'); ?></li>
+                            <li><?= anchor('auth/logout', 'Logout'); ?></li>
+                        </ul>
+
+                    </li>
                     <li><?= anchor('stories/create', '<i class="fi-plus"></i> Create Story', ['class' => 'click-me']); ?></li>
+                    <? endif; ?>
+                    <? if(!isset($logged_in_user)): ?>
+                    <li><?= anchor('auth/login', '<i class="fi-user"></i> Login', ['class' => 'click-me']); ?></li>
+                    <? endif; ?>
                 </ul>
             </div>
         </section>
@@ -51,5 +66,17 @@
         <?= js_tag('assets/js/ckeditor/adapters/jquery.js'); ?>
         <?= js_tag('assets/js/jquery.selectric.min.js'); ?>
         <?= js_tag('assets/js/app.js'); ?>
+
+        <script type="text/javascript">
+        var disqus_shortname = 'paruto'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        </script>
     </body>
 </html>

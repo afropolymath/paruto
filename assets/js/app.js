@@ -10,6 +10,8 @@ var ParutoApp = {
 	/* Base 64 encoded image */
 	uploadImage: null,
 
+	toBeDelete: null,
+
 	/* Latitude and Longitude of Device */
 	deviceLocation: null,
 
@@ -22,10 +24,10 @@ var ParutoApp = {
 		// ParutoApp.locationFinder();
 	},
 	initializeAppAction: function() {
-		$('.delete-story').click(deleteStory);
-		// $('.upvote-story').click(deleteStory);
+		$(document).on('click', '.dyn-action', ParutoApp.dynamicAction);
+		$(document).on('click', '.vote-post-trigger', ParutoApp.votePost);
 		// $('.downvote-story').click(deleteStory);
-	}
+	},
 	bindEvents: function() {
 		$('.media-buttons').click(ParutoApp.switchMediaTab);
 		$('#create-story-form').submit(ParutoApp.storyCreateProcess);
@@ -196,7 +198,7 @@ var ParutoApp = {
 					ParutoApp.displayMessage(msg, 'success');
 					window.location = ParutoApp.base + '/users/dashboard/';
 				} else if(data._error !== undefined) {
-					msg = data._errors[data._errors.length - 1];
+					msg = data._error[data._error.length - 1];
 					ParutoApp.displayMessage(msg, 'error');
 				}
 			}).error(function(data) {
@@ -233,17 +235,58 @@ var ParutoApp = {
 		$('#application-message-parser').html(msg);
 		setTimeout(function() {
 			$('#application-message-parser').addClass('hidden');
-		}, 6000);
+		}, 3000);
 
 	},
 	ajaxNav: function(location) {
-		ParutoApp.startTransitionLoad();
+		// ParutoApp.startTransitionLoad();
 		$('#ajax-content').load(location, function() {
-			ParutoApp.stopTransitionLoad();
+			// ParutoApp.stopTransitionLoad();
+			$(document).foundation();
 		});
 	},
-	deleteStory: function() {
-
+	dynamicAction: function() {
+		$('#confirm-modal').foundation('reveal', 'close');
+		var link = $(this).prop('href');
+		ParutoApp.startLoading();
+		$.ajax({
+			url: link,
+			dataType: 'json',
+			method: 'GET'
+		}).success(function(data) {
+			ParutoApp.stopLoading();
+			var msg;
+			if(data._success !== undefined) {
+				msg = data._success[data._success.length - 1];
+				ParutoApp.displayMessage(msg, 'success');
+				ParutoApp.ajaxNav(window.location.href);
+			} else if(data._error !== undefined) {
+				msg = data._error[data._error.length - 1];
+				ParutoApp.displayMessage(msg, 'error');
+			}
+		});
+		return false;
+	},
+	votePost: function() {
+		// ParutoApp.startLoading();
+		$.getJSON($(this).prop('href'))
+		.success(function(data) {
+			// ParutoApp.stopLoading();
+			var msg;
+			if(data._success !== undefined) {
+				msg = data._success[data._success.length - 1];
+				ParutoApp.displayMessage(msg, 'success');
+				ParutoApp.ajaxNav(window.location.href);
+			} else if(data._error !== undefined) {
+				msg = data._error[data._error.length - 1];
+				ParutoApp.displayMessage(msg, 'error');
+			}
+		})
+		.error(function(data) {
+			// ParutoApp.stopLoading();
+			console.log(data);
+		});
+		return false;
 	}
 	/*
 	createStories: function() {

@@ -1,5 +1,5 @@
 body {
-	font-family: "Ubuntu", Arial, sans-serif;
+	font-family: "Roboto", Arial, sans-serif;
 }
 #application-message-parser {
 	position: fixed;
@@ -15,6 +15,7 @@ body {
 	z-index: 999;
 	font: bold 0.9em Roboto, Arial, sans-serif;
 	transition: all .3s;
+	text-align: center;
 }
 #application-message-parser.error {
 	background: #ffc5c5;
@@ -27,7 +28,7 @@ body {
 	color: #119803;
 }
 #application-message-parser.hidden {
-	top: -45px;
+	top: -75px;
 	transition: all .3s;
 }
 #header {
@@ -52,25 +53,28 @@ body {
 	padding:0;
 	margin:0;
 }
-.header-nav li {
+.header-nav > li {
 	float: left;
 	line-height: 54px;
 	margin-right: 1.7em;
 	font-family: "Roboto", Arial, sans-serif;
 	font-size: 0.90em;
 }
-.header-nav li:last-child {
+.header-nav > li:last-child {
 	margin-right: 0;
 }
 
-.header-nav li a {
+.header-nav > li > a {
 	color: #989898;
 }
-.header-nav li a.click-me {
+.header-nav > li > a.click-me {
 	padding: 0.7em 1.0em;
 	border: solid 3px #7EC4C8;
 	border-radius: 4px;
 	color: #7EC4C8;
+}
+.header-nav > li.active {
+	background: url(../img/squiggly.png) left bottom repeat-x;
 }
 #application-window {
 	overflow: hidden;
@@ -364,7 +368,7 @@ small.error {
 	border-top: dotted 1px #efefef;
 	padding-top: 1.5em;
 }
-.story-mode .meta-information .score {
+.story-mode .meta-information .score, .story-view .meta-information .score {
 	background: #efefef;
 	height: 35px;
 	padding: 0 0.5em;
@@ -375,19 +379,19 @@ small.error {
 	text-align: center;
 	margin-right: 0.3em;
 }
-.story-mode .meta-information .avatar {
+.story-mode .meta-information .avatar, .story-view .meta-information .avatar {
 	background: #CCC;
 	height: 35px;
 	width: 35px;
 	border-radius: 4px;
 	float:left;
 }
-.story-mode .meta-information .avatar-information {
+.story-mode .meta-information .avatar-information, .story-view .meta-information .avatar-information {
 	float:left;
 	margin-left: 1.2em;
 	height: 35px;
 }
-.story-mode .meta-information .avatar-information p.poster {
+.story-mode .meta-information .avatar-information p.poster, .story-view .meta-information .avatar-information p.poster {
 	font: normal 1.0em Roboto, Arial, sans-serif;
 	margin-bottom: 0;
 	color: #CCC;
@@ -425,7 +429,6 @@ small.error {
 .side-bar {
 	background: #FFFFFF;
 	border: 1px #DEDEDE solid;
-	min-height: 400px;
   box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.07);
 }
 .side-bar h1 {
@@ -542,4 +545,50 @@ small.error {
 }
 #settings h2 {
 	margin-top: 1em;
+}
+.sidebar-story {
+	padding: 1.0em 1.2em 1.2em;
+	border-top: solid 1px #efefef;
+}
+.sidebar-story h2 {
+	font-size: 0.8em;
+	border: none;
+	margin:0;
+	margin-bottom: 0em;
+}
+.sidebar-story h2 a:hover {
+	text-decoration: underline;
+}
+.sidebar-story p {
+	font-size: 0.75em;
+	font-weight: 100;
+	margin-top: 0em;
+	color: #767676;
+}
+.sidebar-story .stats {
+	display: inline-block;
+	font-size: 0.7em;
+	color: #6fb2ba;
+	border: solid 2px #6fb2ba;
+	padding: 0.3em 0.5em;
+	border-radius: 3px;
+}
+.story-view h1 {
+	font-size: 1.9em;
+}
+.story-view p {
+	font-size: 1.2em;
+	font-weight: 100;
+}
+.story-view .meta-information .score {
+	font-size: 1.5em;
+}
+.story-view .meta-information .avatar-information p.poster {
+	font-size: 0.9em;
+}
+.story-comments {
+	margin-top: 7em;
+}
+.f-dropdown li a {
+	padding: 0.7em;
 }

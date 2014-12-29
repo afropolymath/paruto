@@ -1,5 +1,4 @@
 <h1 class="section-header">Your Dashboard</h1>
-<?= $this->message->display(); ?>
 <dl class="tabs" data-tab>
   <dd class="active"><a href="#stories">Stories</a></dd>
   <dd><a href="#profile">Profile</a></dd>
@@ -17,16 +16,18 @@
           <a href="#" class="display-stats">Stats</a>
           <a href="">Comments</a>
           <a href="">Edit Story</a>
-          <?= anchor('stories/delete/'.$story->id, 'Delete Story', ['class' => 'delete-story']); ?>
+          <?= anchor('stories/delete/'.$story->id, 'Delete Story', [ 'data-reveal-id' => 'confirm-modal', 'data-reveal-ajax' => 'true']); ?>
           </div>
-          Authored <em><?= time2str($story->created_on); ?></em>. Happening in <a href=""><?= $story->state; ?></a>
+          Authored <em><?= time2str($story->date_created); ?></em>. Happening in <a href=""><?= $story->state; ?></a>
         </h3>
         <div class="stats">
-          <h1>Score: 90%</h1>
+          <? $sum = $story->upvote + $story->downvote; ?>
+          <? $score = $sum == 0 ? 0 : $story->upvote/$sum * 100; ?>
+          <h1>Score: <?= $score; ?>%</h1>
           <div class="progress" style="background: #FF3300">
-            <div class="bar" style="width:90%; background: #3aa044"></div>
+            <div class="bar" style="width:<?= $score; ?>%; background: #3aa044"></div>
           </div>
-          <h3><span class="upvote">45</span><span class="downvote">9</span></h3>
+          <h3><span class="upvote"><?= $story->upvote; ?></span><span class="downvote"><?= $story->downvote; ?></span></h3>
         </div>
       </div>
     <? endforeach; ?>

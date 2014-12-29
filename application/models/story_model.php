@@ -20,5 +20,12 @@ class Story_model extends MY_Model {
     public function search($query) {
         // Todo: Implement search logic
     }
+    
+    public function get_all() {
+        $this->db->select('stories.id, type, headline, state, story, views, image, media, anonymous, user_id, upvote, downvote, date_created, date_modified, status, users.username, users.first_name, users.last_name');
+        $this->db->join('users', 'stories.user_id = users.id', 'full');
+        $this->db->order_by('stories.date_created desc');
+        return parent::get_all();
+    }
 }
 

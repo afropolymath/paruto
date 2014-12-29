@@ -64,6 +64,10 @@ class MY_Controller extends CI_Controller
 
         $this->_load_models();
         
+        if($this->ion_auth->logged_in()) {
+            $this->data['logged_in_user'] = $this->ion_auth->user()->row();
+        }
+
         if(!$this->_check_role()) {
             if(!$this->ion_auth->logged_in()) {
                 $this->message->set('error','You must log in to view this page');

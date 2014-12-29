@@ -21,7 +21,10 @@ $config['acl'] = [
     // Regular User Actions
     [
         'users/dashboard'   => 'Dashboard',
-        'stories/index'   => 'Stream',
-        'stories/create'   => 'Create Story'
+        'stories/index'     => 'Stream',
+        'stories/create'    => 'Create Story',
+        'stories/delete'    => 'Delete Story',
+        'stories/vote'      => 'Vote Story',
+        'stories/view'      => 'View Story'
     ]
 ];
