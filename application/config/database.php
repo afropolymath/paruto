@@ -48,21 +48,49 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '127.0.0.1';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'paruto';
-$db['default']['dbdriver'] = 'mysqli';
-$db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
-$db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
+if(isset($_SERVER['OPENSHIFT_MYSQL_DB_HOST'])) {
+    define("DBHOST", $_SERVER['OPENSHIFT_MYSQL_DB_HOST']);
+    define("DBPORT", $_SERVER['OPENSHIFT_MYSQL_DB_PORT']);
+    define("DBUSER", 'adminimJLYJd');
+    define("DBPASS", 'Rk3eMmAg21CS');
+    $active_group = 'staging';
+}
+$db = [
+    'development' => [
+        'hostname' => '127.0.0.1',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'paruto',
+        'dbdriver' => 'mysqli',
+        'dbprefix' => '',
+        'pconnect' => TRUE,
+        'db_debug' => TRUE,
+        'cache_on' => FALSE,
+        'cachedir' => '',
+        'char_set' => 'utf8',
+        'dbcollat' => 'utf8_general_ci',
+        'swap_pre' => '',
+        'autoinit' => TRUE,
+        'stricton' => FALSE 
+    ],
+    'staging' => [
+        'hostname' => DBHOST,
+        'username' => DBUSER,
+        'password' => DBPASS,
+        'database' => 'paruto',
+        'dbdriver' => 'mysqli',
+        'dbprefix' => '',
+        'pconnect' => TRUE,
+        'db_debug' => TRUE,
+        'cache_on' => FALSE,
+        'cachedir' => '',
+        'char_set' => 'utf8',
+        'dbcollat' => 'utf8_general_ci',
+        'swap_pre' => '',
+        'autoinit' => TRUE,
+        'stricton' => FALSE 
+    ]
+];
 
 
 /* End of file database.php */
