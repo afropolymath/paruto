@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url'] = 'http://localhost:8000/';
+
+$config['base_url'] = isset($_SERVER['OPENSHIFT_MYSQL_DB_HOST']) ? 'http://paruto-chidieberennadi.rhcloud.com/' : 'http://localhost:8000/';
 
 /*
 |--------------------------------------------------------------------------
