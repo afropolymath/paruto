@@ -1,20 +1,24 @@
 <h1 class="section-header">Your Dashboard</h1>
+<?= $this->message->display(); ?>
+<!-- Tab Menu -->
 <dl class="tabs" data-tab>
   <dd class="active"><a href="#stories">Stories</a></dd>
   <dd><a href="#profile">Profile</a></dd>
-  <dd><a href="#settings">Settings</a></dd>
 </dl>
+
+<!-- Tab Content -->
 <div class="tabs-content">
+
+  <!-- Stories Tab -->
   <div class="content active" id="stories">
   <? if(isset($user_stories) && count($user_stories) > 0): ?>
     <div class="alert-box secondary radius">You have created <?= count($user_stories); ?> stories. <strong><?= anchor('stories/create', 'Create one more'); ?></strong></div>
     <? foreach($user_stories as $story): ?>
       <div class="profile-story">
-        <h2><?= $story->headline; ?></h2>
+        <h2><?= anchor('stories/view/'.$story->id, $story->headline); ?></h2>
         <h3>
           <div class="dashboard-actions right">
           <a href="#" class="display-stats">Stats</a>
-          <a href="">Comments</a>
           <a href="">Edit Story</a>
           <?= anchor('stories/delete/'.$story->id, 'Delete Story', [ 'data-reveal-id' => 'confirm-modal', 'data-reveal-ajax' => 'true']); ?>
           </div>
@@ -35,35 +39,39 @@
     <div class="alert-box info radius">You have not created any stories. <strong><?= anchor('stories/create', 'Create one now'); ?></strong></div>
   <? endif; ?>
   </div>
+
+  <!-- Profile Tab -->
   <div class="content" id="profile">
     <div class="profile-information">
-      <label for="firstname">First name</label>
-      <input type="text" name="first_name" class="mt-form-control-medium radius"/>
-      <label for="firstname">Last name</label>
-      <input type="text" name="first_name" class="mt-form-control-medium radius"/>
-      <label for="firstname">Pseudonym</label>
-      <input type="text" name="first_name" class="mt-form-control-medium radius"/>
-      <label for="firstname">Select your profile image</label>
+      <?= form_open('users/update/', ['id' => 'save-profile-form']); ?>
+      <label for="first_name">First name</label>
+      <input type="text" name="first_name" class="mt-form-control-medium radius" value="<?= set_value('first_name', $logged_in_user->first_name); ?>" id="first_name"/>
+      <div class="first_name-error error-field hide"><ul></ul></div>
+      <label for="last_name">Last name</label>
+      <input type="text" name="last_name" class="mt-form-control-medium radius" value="<?= set_value('last_name', $logged_in_user->last_name); ?>" id="last_name"/>
+      <div class="last_name-error error-field hide"><ul></ul></div>
+      <label for="username">Pseudonym <em>(This is what we'll call you)</em></label>
+      <input type="text" name="username" class="mt-form-control-medium radius" value="<?= set_value('username', $logged_in_user->username); ?>" id="username"/>
+      <div class="username-error error-field hide"><ul></ul></div>
+      <!-- <label for="firstname">Select your profile image</label>
       <div class="image-setting">
         <div class="profile-image"></div>
         <div class="upload-form">
           <input type="file"/>
           <button type="submit" class="button tiny radius" id="create-story" style="margin-top:1em">Save Changes</button>
         </div>
-      </div>
-      <label for="firstname">A little about me</label>
-      <textarea name="first_name" class="mt-form-control-medium radius" style="height:200px;"></textarea>
-      <label for="firstname">Twitter Handle</label>
-      <input type="text" name="first_name" class="mt-form-control-medium radius"/>
-
-      <label for="firstname">LinkedIn Public Profile Line</label>
-      <input type="text" name="first_name" class="mt-form-control-medium radius"/>
+      </div> -->
+      <label for="about">A little about me <em>(Optional)</em></label>
+      <textarea name="about" class="mt-form-control-medium radius" style="height:200px;" placeholder="A short description about you" id="about"><?= set_value('about', $profile->about); ?></textarea>
+      <h2>How can people reach you</h2>
+      <label for="twitter">Twitter Handle <em>(Optional)</em></label>
+      <input type="text" name="twitter" class="mt-form-control-medium radius" id="twitter" value="<?= set_value('twitter', $profile->twitter); ?>"/>
+      <label for="linkedin">LinkedIn Public Profile Line <em>(Optional)</em></label>
+      <input type="text" name="linkedin" class="mt-form-control-medium radius" id="linkedin" value="<?= set_value('linkedin', $profile->linkedin); ?>"/>
+      <label for="instagram">Instagram <em>(Optional)</em></label>
+      <input type="text" name="instagram" class="mt-form-control-medium radius" id="instagram" value="<?= set_value('instagram', $profile->instagram); ?>"/>
       <button type="submit" class="button paruto large radius" id="create-story" style="margin-top:1em">Save Changes</button>
+      <?= form_close(); ?>
     </div>
-  </div>
-  <div class="content" id="settings">
-    <h2>Privacy</h2>
-    <p><input type="checkbox"/> This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p><h2>Privacy</h2>
-    <p><input type="checkbox"/> This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
   </div>
 </div>

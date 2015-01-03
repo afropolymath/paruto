@@ -1,5 +1,31 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+if(!function_exists('format_activity')) {
+	/**
+ 	*	format_activity
+ 	*
+ 	*	@return void
+ 	*	@author Chidiebere Nnadi
+ 	*/
+  function format_activity($activity) {
+    $activity_lang = [
+      'pupd' => 'did a profile update',
+      'aart' => 'added a new story',
+      'rart' => 'deleted a story',
+      'uart' => 'upvoted a story',
+      'dart' => 'downvoted a story'
+    ];
+    return $activity_lang[$activity->activity]; 
+  }
+}
+
 if(!function_exists('time2str')) {
+	/**
+ 	*	time2str
+ 	*
+ 	*	@return void
+ 	*	@author Chidiebere Nnadi
+ 	*/
   function time2str($ts)
   {
       if(!ctype_digit($ts))

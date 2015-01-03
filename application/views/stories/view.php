@@ -1,5 +1,5 @@
 <div class="story-view">
-  <h1><?= $story->state . " - " . $story->headline; ?></h1>
+  <h1><?= ucwords($story->state) . " - " . $story->headline; ?></h1>
   <? if($story->type === 'image'): ?><img src="<?= $story->image ?>"/><? endif ?>
   <p><?= $story->story; ?></p>
   <div class="meta-information">

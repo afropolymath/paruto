@@ -1,5 +1,39 @@
 body {
 	font-family: "Roboto", Arial, sans-serif;
+	background: #000;
+}
+#push-forward {
+	position: absolute;
+	left:60px;
+	right: 0;
+	top:0;
+	min-height: 100%;
+	background: #FFF;
+}
+#push-left {
+	position:fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 60px;
+}
+#push-left ul {
+	margin:0; padding:0;
+	list-style: none;
+	width: 60px;
+}
+#push-left ul li {
+	width: 60px;
+	height: 60px;
+	border-bottom: solid 1px #313131;
+	text-align:center;
+	line-height: 60px;
+}
+#push-left ul li a {
+	color: #FFF;
+	font: 100 1.2em Roboto, Arial, sans-serif;
+	text-decoration: none;
+	border: none;
 }
 #application-message-parser {
 	position: fixed;
@@ -34,7 +68,7 @@ body {
 #header {
 	position: fixed;
 	top: 0;
-	left: 0;
+	left:60px;
 	right: 0;
 	z-index: 99;
 	padding: 3em 3em 1em 3em;
@@ -45,6 +79,9 @@ body {
 	background: #fff;
 	box-shadow: 0 0 12px 0 rgba(0,0,0,0.4);
 	transition: all .3s;
+}
+#push-forward.no-push, #header.no-push {
+	left: 0;
 }
 .header-nav {
 	list-style: none;
@@ -67,11 +104,15 @@ body {
 .header-nav > li > a {
 	color: #989898;
 }
+.header-nav > li > a > em {
+	color: #ff3c00;
+	font-style: normal;
+}
 .header-nav > li > a.click-me {
-	padding: 0.7em 1.0em;
-	border: solid 3px #7EC4C8;
+	padding: 0.5em 1.0em;
+	border: slategrey solid 2px;
 	border-radius: 4px;
-	color: #7EC4C8;
+	color: slategrey;
 }
 .header-nav > li.active {
 	background: url(../img/squiggly.png) left bottom repeat-x;
@@ -119,6 +160,11 @@ label {
 	font-family: "Roboto", Arial, sans-serif;
 	margin-bottom: 0.3em;
 }
+label em {
+	color: #CCC;
+	font-style: normal;
+	font-weight: 100;
+}
 h1 {
 	font-family: "Roboto", Arial, sans-serif;
 	font-weight: 100;
@@ -126,6 +172,52 @@ h1 {
 	margin-bottom: 1.0em;
 	padding-bottom: 0.3em;
 	color: #989898;
+}
+h1.section-header {
+	line-height: 50px;
+	margin-top: 0;
+	padding-bottom: 0;
+}
+/*.state-select-menu {
+	position: relative;
+}*/
+.state-select-menu > a {
+	background: #FFF;
+	display: inline-block;
+	border: solid #efefef 1px;
+	margin:0;
+	padding: 0 1.4em;
+	height: 50px;
+	font-family: "Roboto", Arial, sans-serif;
+	font-weight: 100;
+	font-size: 1.0em;
+	color: #656565;
+	line-height: 50px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.state-select-menu > a.active {
+	box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.07) inset;
+	border-color: #CCC;
+}
+.state-select-menu-items {
+	display:none;
+	background: #FFF;
+	color: #656565;
+	z-index: 5;
+	position: absolute;
+	top: 54px;
+	right: 0px;
+	border: 1px solid #dedede;
+	box-shadow: 0px 1px 6px 0 rgba(0,0,0,0.1);
+	width: 70%;
+	border-radius: 4px;
+}
+.state-select-menu-items .state-list > h2 {
+	margin-top: 1.0em;
+}
+.state-select-menu-items .state-list > ul li {
+	font-size: 0.8em;
 }
 h2 {
 	font-family: "Roboto", Arial, sans-serif;
@@ -137,8 +229,13 @@ h2 {
 	padding-bottom: 0.3em;
 	color: #676767;
 }
+p {
+	font-family: "Roboto", Arial, sans-serif;
+	font-weight: 300;
+	font-size: 0.8em;
+}
 i {
-	margin-right: 0.5em;
+	margin-right: 0.1em;
 }
 .sr-label {
 	display: none;
@@ -281,8 +378,7 @@ small.error {
 }
 .error-field ul {
 	margin:0; padding:0;
-	list-style: square;
-	margin-left: 1.2em;
+	list-style: none;
 }
 .error-field li {
 	font-size: 0.8em;
@@ -313,6 +409,13 @@ small.error {
 	color: #C9C9C9;
 	opacity: 1;
 	transition: all .3s;
+}
+.story-mode .summary {
+	font-size: 0.9em;
+	font-weight: 100;
+	margin: 1.5em 0;
+	line-height: 2.0em;
+	color: #656565;
 }
 .story-mode .stats {
 	opacity: 0;
@@ -356,6 +459,9 @@ small.error {
 	margin-top: 0;
 	color: #8c4b2f;
 }
+.story-mode h1 a {
+	color: #8c4b2f;
+}
 .story-mode p {
 	font-size: 0.8em;
 	line-height: 1.9em;
@@ -380,7 +486,7 @@ small.error {
 	margin-right: 0.3em;
 }
 .story-mode .meta-information .avatar, .story-view .meta-information .avatar {
-	background: #CCC;
+	background: url('../img/profile.png') center center #CCC;
 	height: 35px;
 	width: 35px;
 	border-radius: 4px;
@@ -470,6 +576,9 @@ small.error {
 	margin-bottom: 0.5em;
 	padding-bottom: 0.3em;
 	color: #676767;
+}
+.profile-story h2 a {
+	color: #8c4b2f;
 }
 .profile-story h3 {
 	margin:0;
@@ -591,4 +700,30 @@ small.error {
 }
 .f-dropdown li a {
 	padding: 0.7em;
+}
+.activity-list {
+	list-style: none;
+	margin: 0;
+	padding: 1.0em;
+}
+.activity-list li {
+	font: 100 0.8em "Roboto", Arial, sans-serif;
+	padding: 0.5em 0;
+}
+.activity-list li em {
+	color: #989898;
+	font-style: normal;
+}
+p.summary-title {
+	font-weight: 700;
+	margin-bottom: 0;
+}
+p.summary-content {
+	font-size: 1.0em;
+}
+.user-story h3 {
+	font: 100 1.2em "Roboto", Arial, sans-serif;
+}
+.user-story a {
+	font-size: 0.8em;
 }

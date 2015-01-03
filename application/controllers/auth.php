@@ -2,10 +2,6 @@
 
 class Auth extends MY_Controller {
 
-    function __construct() {
-        parent::__construct();
-    }
-
     public function index() {
         if($this->ion_auth->logged_in()) {
             redirect('users/dashboard');
@@ -20,10 +16,14 @@ class Auth extends MY_Controller {
             $password = $this->input->post('password');
             $remember = (bool) $this->input->post('remember');
             if($this->ion_auth->login($identity, $password, $remember)) {
-                $this->message->set('success', $this->ion_auth->messages());
+                foreach($this->ion_auth->messages_array() as $m) {
+                    $this->message->set('success', $m);
+                }
                 redirect('users/dashboard');
             } else {
-                $this->message->set('error', $this->ion_auth->errors());
+                foreach($this->ion_auth->errors_array() as $m) {
+                    $this->message->set('error', $m);
+                }
             }
         }
     }
@@ -41,11 +41,20 @@ class Auth extends MY_Controller {
             $email = $this->input->post('email');
             $additional_data = ['first_name' => $this->input->post('first_name'), 'last_name' => $this->input->post('last_name')];
             $group = ['2'];
-            if($this->ion_auth->register($username, $password, $email, $additional_data, $group)) {
-                $this->message->set('success', $this->ion_auth->messages());
+            if($uid = $this->ion_auth->register($username, $password, $email, $additional_data, $group)) {
+                // Create profile for the user if it doesn't already exist
+                if(!$this->profile->get_by(['user_id' => $uid])) {
+                    $profile = ['user_id' => $uid];
+                    $this->profile->insert($profile);
+                }
+                foreach($this->ion_auth->messages_array() as $m) {
+                    $this->message->set('success', $m);
+                }
                 redirect('auth/login');
             } else {
-                $this->message->set('error', $this->ion_auth->errors());
+                foreach($this->ion_auth->errors_array() as $m) {
+                    $this->message->set('success', $m);
+                }
             }
 
         }
@@ -53,7 +62,9 @@ class Auth extends MY_Controller {
     
     public function logout() {
         if($this->ion_auth->logout()) {
-            $this->message->set('success', $this->ion_auth->messages());
+            foreach($this->ion_auth->messages_array() as $m) {
+                $this->message->set('success', $m);
+            }
             redirect('auth/login');
         }
     }

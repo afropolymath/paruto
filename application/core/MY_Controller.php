@@ -40,7 +40,7 @@ class MY_Controller extends CI_Controller
     /**
      * A list of models to be autoloaded
      */
-    protected $models = array('story', 'vote', 'profile');
+    protected $models = array('story', 'vote', 'profile', 'user', 'activity', 'state');
     
     /**
      * A formatting string for the model autoloading feature.
@@ -64,17 +64,27 @@ class MY_Controller extends CI_Controller
 
         $this->_load_models();
         
+        $this->data['statelist'] = [];
+        
+        foreach($statelist = $this->state->get_all() as $i => $state) {
+            if($i < count($statelist)/2) {
+                $this->data['statelist']['col1'][] = $state;
+            } else {
+                $this->data['statelist']['col2'][] = $state;
+            }
+        }
+        
         if($this->ion_auth->logged_in()) {
             $this->data['logged_in_user'] = $this->ion_auth->user()->row();
         }
 
         if(!$this->_check_role()) {
-            if(!$this->ion_auth->logged_in()) {
+            if(!isset($this->data['logged_in_user'])) {
                 $this->message->set('error','You must log in to view this page');
                 redirect('auth/login');
             } else {
                 $this->message->set('error','You are not allowed to view this page');
-                // Not allowed
+                // Redirect
             }
         }
 
@@ -263,10 +273,4 @@ class MY_Controller extends CI_Controller
             return false;
         }
     }
-    /*
-    public function load_side_bar($aside) {
-        $this->asides['sidebar'] = $aside;
-        $this->data['app_sidebar'] = $this->load->view($aside, $this->data, TRUE);
-    }
-    */
 }

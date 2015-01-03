@@ -1,0 +1,153 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'foundation-cli' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose cache add [ 'foundation-cli', null ]
+5 verbose cache add name=undefined spec="foundation-cli" args=["foundation-cli",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'foundation-cli',
+6 verbose parsed url   path: 'foundation-cli',
+6 verbose parsed url   href: 'foundation-cli' }
+7 silly lockFile ea390e6f-foundation-cli foundation-cli
+8 verbose lock foundation-cli /Users/chidieberennadi/.npm/ea390e6f-foundation-cli.lock
+9 silly lockFile ea390e6f-foundation-cli foundation-cli
+10 silly lockFile ea390e6f-foundation-cli foundation-cli
+11 verbose addNamed [ 'foundation-cli', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile ea593da0-foundation-cli foundation-cli@
+14 verbose lock foundation-cli@ /Users/chidieberennadi/.npm/ea593da0-foundation-cli.lock
+15 silly addNameRange { name: 'foundation-cli', range: '*', hasData: false }
+16 verbose request where is /foundation-cli
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 0d8bcb7638bb9442
+19 verbose url raw /foundation-cli
+20 verbose url resolving [ 'https://registry.npmjs.org/', './foundation-cli' ]
+21 verbose url resolved https://registry.npmjs.org/foundation-cli
+22 verbose request where is https://registry.npmjs.org/foundation-cli
+23 info trying registry request attempt 1 at 12:42:21
+24 http GET https://registry.npmjs.org/foundation-cli
+25 http 200 https://registry.npmjs.org/foundation-cli
+26 silly registry.get cb [ 200,
+26 silly registry.get   { date: 'Thu, 01 Jan 2015 11:42:23 GMT',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+26 silly registry.get     etag: '"F4ZEODZUUO37OGNMVI54JFLPM"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '11069',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     'x-served-by': 'cache-fra1228-FRA',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1420112542.663247,VS0,VE436',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 silly addNameRange number 2 { name: 'foundation-cli', range: '*', hasData: true }
+28 silly addNameRange versions [ 'foundation-cli',
+28 silly addNameRange   [ '0.1.0',
+28 silly addNameRange     '0.2.0',
+28 silly addNameRange     '1.0.0-rc.1',
+28 silly addNameRange     '1.0.0',
+28 silly addNameRange     '1.0.1',
+28 silly addNameRange     '1.0.2',
+28 silly addNameRange     '1.0.3',
+28 silly addNameRange     '1.0.4' ] ]
+29 verbose addNamed [ 'foundation-cli', '1.0.4' ]
+30 verbose addNamed [ '1.0.4', '1.0.4' ]
+31 silly lockFile bad98d80-foundation-cli-1-0-4 foundation-cli@1.0.4
+32 verbose lock foundation-cli@1.0.4 /Users/chidieberennadi/.npm/bad98d80-foundation-cli-1-0-4.lock
+33 silly lockFile 8248c132-ion-cli-foundation-cli-1-0-4-tgz https://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz
+34 verbose lock https://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz /Users/chidieberennadi/.npm/8248c132-ion-cli-foundation-cli-1-0-4-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz',
+35 verbose addRemoteTarball   'ed0410e7e8b416248e3045546819afb315a75797' ]
+36 info retry fetch attempt 1 at 12:42:23
+37 verbose fetch to= /var/folders/s3/h0b6wwf11zdbppkxjxvh0d780000gn/T/npm-77396-63tIxJum/registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz
+38 http GET https://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz
+39 http 200 https://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz
+40 silly lockFile 8248c132-ion-cli-foundation-cli-1-0-4-tgz https://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz
+41 silly lockFile 8248c132-ion-cli-foundation-cli-1-0-4-tgz https://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz
+42 silly lockFile bad98d80-foundation-cli-1-0-4 foundation-cli@1.0.4
+43 silly lockFile bad98d80-foundation-cli-1-0-4 foundation-cli@1.0.4
+44 silly lockFile ea593da0-foundation-cli foundation-cli@
+45 silly lockFile ea593da0-foundation-cli foundation-cli@
+46 silly resolved [ { name: 'foundation-cli',
+46 silly resolved     version: '1.0.4',
+46 silly resolved     description: 'Command-line interface for Foundation for Apps.',
+46 silly resolved     main: './bin/cli.js',
+46 silly resolved     dependencies:
+46 silly resolved      { bower: '^1.3.12',
+46 silly resolved        colors: '^1.0.3',
+46 silly resolved        exec: '^0.1.2',
+46 silly resolved        'is-root': '^1.0.0',
+46 silly resolved        nopt: '^3.0.1',
+46 silly resolved        open: '0.0.5',
+46 silly resolved        rimraf: '^2.2.8',
+46 silly resolved        'single-line-log': '^0.4.1',
+46 silly resolved        'string-length': '^1.0.0',
+46 silly resolved        'update-notifier': '^0.2.2' },
+46 silly resolved     scripts:
+46 silly resolved      { postinstall: 'node lib/welcome.js',
+46 silly resolved        test: './bin/cli.js new test' },
+46 silly resolved     bin: { 'foundation-apps': './bin/cli.js' },
+46 silly resolved     author: { name: 'ZURB' },
+46 silly resolved     license: 'MIT',
+46 silly resolved     gitHead: '40c60f90a57b4434d6cd2cc04fdb238436772597',
+46 silly resolved     _id: 'foundation-cli@1.0.4',
+46 silly resolved     _shasum: 'ed0410e7e8b416248e3045546819afb315a75797',
+46 silly resolved     _from: 'foundation-cli@',
+46 silly resolved     _npmVersion: '1.4.28',
+46 silly resolved     _npmUser: { name: 'antjanus', email: 'antonin@antjanus.com' },
+46 silly resolved     maintainers: [ [Object], [Object] ],
+46 silly resolved     dist:
+46 silly resolved      { shasum: 'ed0410e7e8b416248e3045546819afb315a75797',
+46 silly resolved        tarball: 'http://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz' },
+46 silly resolved     directories: {},
+46 silly resolved     _resolved: 'https://registry.npmjs.org/foundation-cli/-/foundation-cli-1.0.4.tgz' } ]
+47 info install foundation-cli@1.0.4 into /usr/local/lib
+48 info installOne foundation-cli@1.0.4
+49 verbose lib/node_modules/foundation-cli unbuild
+50 verbose tar unpack /Users/chidieberennadi/.npm/foundation-cli/1.0.4/package.tgz
+51 silly lockFile a98f0883--lib-node-modules-foundation-cli tar:///usr/local/lib/node_modules/foundation-cli
+52 verbose lock tar:///usr/local/lib/node_modules/foundation-cli /Users/chidieberennadi/.npm/a98f0883--lib-node-modules-foundation-cli.lock
+53 silly lockFile 4447ed27-foundation-cli-1-0-4-package-tgz tar:///Users/chidieberennadi/.npm/foundation-cli/1.0.4/package.tgz
+54 verbose lock tar:///Users/chidieberennadi/.npm/foundation-cli/1.0.4/package.tgz /Users/chidieberennadi/.npm/4447ed27-foundation-cli-1-0-4-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/foundation-cli'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/foundation-cli']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/foundation-cli',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/foundation-cli',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 13.4.0
+59 error command "node" "/usr/local/bin/npm" "install" "-g" "foundation-cli"
+60 error cwd /Users/chidieberennadi/Documents/Projects/paruto
+61 error node -v v0.10.33
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/foundation-cli
+64 error fstream_path /usr/local/lib/node_modules/foundation-cli
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/foundation-cli'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]

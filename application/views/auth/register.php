@@ -23,8 +23,8 @@
         <input type="text" name="username" value="<?= set_value('username',''); ?>" class="mt-form-control radius"/>
         <?= form_error('username','<small class="error">','</small>'); ?>
 
-        <label><input type="checkbox" name="agreement"/> I agree with the terms and conditions</label>
-        <input type="submit" name="submit-button" value="Create Account" class="button radius"/>
+        <p><input type="checkbox" name="agreement"/> I agree with the terms and conditions</p>
+        <input type="submit" name="submit-button" value="Create Account" class="button paruto radius"/>
         <?= form_close(); ?>
     </div>
 </div>

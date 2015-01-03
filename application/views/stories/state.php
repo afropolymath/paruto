@@ -2,23 +2,18 @@
   <div class="state-select-menu right">
     <a href="#">Filter by state</a>
     <div class="state-select-menu-items">
-      <!-- <div class="small-6 columns"><?= anchor('stories/state/abia', 'Abia (0)'); ?></div> -->
-      <div class="row">
-        <div class="small-6 columns state-list">
-            <? foreach($statelist['col1'] as $state): ?>
-            <h2><?= anchor('stories/state/'.underscore($state->state_name), $state->state_name); ?></h2>
-            <? endforeach; ?>
-        </div>
-        <div class="small-6 columns state-list">
-            <? foreach($statelist['col2'] as $state): ?>
-            <h2><?= anchor('stories/state/'.underscore($state->state_name), $state->state_name); ?></h2>
-            <? endforeach; ?>
-        </div>
-      </div>
+      <div class="small-3 columns"><?= anchor('stories/state/abia', 'Abia (0)'); ?></div>
+      <div class="small-3 columns"><?= anchor('stories/state/adamawa', 'Adamawa (0)'); ?></div>
+      <div class="small-3 columns"><?= anchor('stories/state/akwa-ibom', 'Akwa-Ibom (0)'); ?></div>
+      <div class="small-3 columns"><?= anchor('#', 'Anambra (0)'); ?></div>
+      <div class="small-3 columns"><?= anchor('#', 'Bauchi (0)'); ?></div>
+      <div class="small-3 columns"><?= anchor('#', 'Bayelsa (0)'); ?></div>
+      <div class="small-3 columns"><?= anchor('#', 'Benue (0)'); ?></div>
+      <div class="small-3 columns"><?= anchor('#', 'Borno (0)'); ?></div>
     </div>
   </div>
   <h1 class="section-header">
-    Stories on Paruto
+    Stories from <?= ucwords($state); ?>
   </h1>
 </div>
 <? if(isset($stories) && count($stories) > 0): ?>
@@ -32,7 +27,7 @@
       </div>
       <h1><?= anchor('stories/view/'.$story->id, ucwords($story->state) . " - " . $story->headline); ?></h1>
       <? if($story->type === 'image'): ?><img src="<?= $story->image ?>"/><? endif ?>
-      <div class="summary"><?= word_limiter(strip_tags($story->story), 50); ?></div>
+      <p><?= $story->story; ?></p>
       <div class="meta-information">
         <div class="right actions">
           <?= anchor('stories/view/'.$story->id, 'Entire Story', ['class' => 'button small secondary radius']); ?>
@@ -48,5 +43,5 @@
     </div>
     <? endforeach ?> 
 <? else: ?>
-    <div class="alert-box info radius">There are currently no stories on Paruto</div>
+    <div class="alert-box info radius">There are currently no stories for this state</div>
 <? endif ?>

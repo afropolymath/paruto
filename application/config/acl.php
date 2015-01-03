@@ -9,10 +9,11 @@
 $config['acl'] = [
     // Global Actions
     [
-        'auth/login' => 'Confirm',
-        'auth/register' => 'Register',
-        'auth/logout' => 'Logout',
-        'stories/index'   => 'Stream',
+        'auth/login'        => 'Confirm',
+        'auth/register'     => 'Register',
+        'auth/logout'       => 'Logout',
+        'stories/index'     => 'Stream',
+        'users/profile'     => 'View User',
     ],
     // Administrator Specific Actions
     [
@@ -21,7 +22,10 @@ $config['acl'] = [
     // Regular User Actions
     [
         'users/dashboard'   => 'Dashboard',
+        'users/profile'     => 'View User',
+        'users/update'      => 'Update User',
         'stories/index'     => 'Stream',
+        'stories/state'     => 'State Stream',
         'stories/create'    => 'Create Story',
         'stories/delete'    => 'Delete Story',
         'stories/vote'      => 'Vote Story',

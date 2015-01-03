@@ -78,6 +78,6 @@
 <label for="story">Story Content</label>
 <textarea name="story" id="story" class="cke-repl"><?= set_value('content'); ?></textarea>
 <div class="story-error error-field hide"><ul></ul></div>
-<label for="anonymous" style="margin-top:1em"><input type="checkbox" name="anonymous" id="anonymous"/> Create as anonymous</label>
+<p style="margin-top:1em"><input type="checkbox" name="anonymous" id="anonymous"/> Create as anonymous</p>
 <button type="submit" class="button paruto large radius" id="create-story" style="margin-top:1em">Publish Story</button>
 <?= form_close(); ?>

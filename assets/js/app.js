@@ -7,6 +7,8 @@ var ParutoApp = {
 		type: null,
 	},
 
+	profileSaveParams: {},
+
 	/* Base 64 encoded image */
 	uploadImage: null,
 
@@ -23,16 +25,22 @@ var ParutoApp = {
 		ParutoApp.bindEvents();
 		// ParutoApp.locationFinder();
 	},
-	initializeAppAction: function() {
-		$(document).on('click', '.dyn-action', ParutoApp.dynamicAction);
-		$(document).on('click', '.vote-post-trigger', ParutoApp.votePost);
-		// $('.downvote-story').click(deleteStory);
-	},
 	bindEvents: function() {
-		$('.media-buttons').click(ParutoApp.switchMediaTab);
-		$('#create-story-form').submit(ParutoApp.storyCreateProcess);
+		/* Miniature Actions */
+		$(document).on('click', '.media-buttons', ParutoApp.switchMediaTab);
 		$(document).on('click', '.display-stats', ParutoApp.displayStats);
+		$(document).on('click', '.state-select-menu', ParutoApp.toggleStateSelect);
+		/* File Reader image loading */
 		$('#image-content').change(ParutoApp.selectImage);
+
+		/* Dynamic action - Added on links with HREF attributes. Performs the action, reloads the page and shows the status message */
+		$(document).on('click', '.dyn-action', ParutoApp.dynamicAction);
+
+		$(document).on('click', '.vote-post-trigger', ParutoApp.votePost);
+
+		/* Forms */
+		$(document).on('submit', '#save-profile-form', ParutoApp.saveProfileProcess);
+		$(document).on('submit', '#create-story-form', ParutoApp.storyCreateProcess);
 	},
 	navStick: function() {
 		$(window).scroll(function() {
@@ -48,6 +56,16 @@ var ParutoApp = {
 				}
 			}
 		});
+	},
+	toggleStateSelect: function() {
+		var elem = $(this).children('a');
+		if(!elem.hasClass('active')) {
+			$('.state-select-menu-items').show();
+			elem.addClass('active');
+		} else {
+			$('.state-select-menu-items').hide();
+			elem.removeClass('active');
+		}
 	},
 	switchMediaTab: function() {
 		if($(this).hasClass('selected')) {
@@ -67,12 +85,11 @@ var ParutoApp = {
 			}
 			$(id).show().siblings().hide();
 		}
-		
 		return false;
 	},
 	/* Change event for Image Upload action */
 	selectImage: function() {
-    $('media-error').hide();
+    $('.media-error').hide();
 		var $files = $(this).context.files;
 		if($files && $files[0]) {
     	if($files[0].type === "image/jpeg" || $files[0].type === "image/png") {
@@ -124,7 +141,54 @@ var ParutoApp = {
 		    return false;
 		});
 	},
+	saveProfileProcess: function() {
+		var action = $(this).prop('action');
+		var errors = 0;
+		var fields = ['first_name','last_name','username'];
 
+		for(var i in fields) {
+			$('.' + fields[i] + '-error ul').empty();
+			var cleaned_input =  $('#' + fields[i]).val().trim();
+			if( cleaned_input === "" || cleaned_input.length < 3 ) {
+				$('.' + fields[i] + '-error ul').append('<li>You need to enter something valid for ' + fields[i] + '</li>');
+				$('.' + fields[i] + '-error').removeClass('hide');
+				errors++;
+			} else {
+				$('.' + fields[i] + '-error').addClass('hide');
+				ParutoApp.profileSaveParams[fields[i]] = cleaned_input;
+			}
+		}
+
+		var optional = ['about', 'twitter', 'instagram', 'linkedin'];
+		for(var j in optional) {
+			var xss_clean =  $('#' + optional[j]).val().trim();
+			if( xss_clean !== "" ) {
+				ParutoApp.profileSaveParams[optional[j]] = xss_clean;
+			}
+		}
+
+		if(errors > 0) {
+			var firstErrorPosition = $('.error-field:visible').first().offset().top - 200;
+			$('body').animate({ scrollTop:firstErrorPosition }, 500);
+		} else {
+			console.log(ParutoApp.profileSaveParams);
+			// Show loading dialog
+			ParutoApp.startLoading();
+			$.ajax({
+				url: action,
+				dataType: 'json',
+				method: 'POST',
+				data: ParutoApp.profileSaveParams
+			}).success(function(data) {
+				ParutoApp.stopLoading();
+				ParutoApp.handleRemoteData(data);
+			}).error(function(data) {
+				ParutoApp.stopLoading();
+				console.log(data);
+			});
+		}
+		return false;
+	},
 	storyCreateProcess: function() {
 		var errors = 0;
 		var fields = ['headline','state','story'];
@@ -151,7 +215,12 @@ var ParutoApp = {
 		}
 
 		/* Check additional Media */
-		if(ParutoApp.storyCreateParams.type === 'image' && ParutoApp.uploadImage !== null) {
+		if(ParutoApp.storyCreateParams.type === null) {
+			if('image' in ParutoApp.storyCreateParams)
+				delete ParutoApp.storyCreateParams.image;
+			if('media' in ParutoApp.storyCreateParams)
+				delete ParutoApp.storyCreateParams.media;
+		} else if(ParutoApp.storyCreateParams.type === 'image' && ParutoApp.uploadImage !== null) {
 			ParutoApp.storyCreateParams.image = ParutoApp.uploadImage;
 			ParutoApp.storyCreateParams.media = null;
 		} else if(ParutoApp.storyCreateParams.type === 'link') {
@@ -178,11 +247,9 @@ var ParutoApp = {
 		if(errors > 0) {
 			var firstErrorPosition = $('.error-field:visible').first().offset().top - 200;
 			$('body').animate({ scrollTop:firstErrorPosition }, 500);
-			// setTimeout(function() {
-			// 	$('.error-field').addClass('hide');
-			// }, 6000);
 		} else {
 			// Show loading dialog
+			ParutoApp.storyCreateParams.state = ParutoApp.storyCreateParams.state.toLowerCase();
 			ParutoApp.startLoading();
 			$.ajax({
 				url: ParutoApp.base + '/stories/create',
@@ -190,7 +257,6 @@ var ParutoApp = {
 				method: 'POST',
 				data: ParutoApp.storyCreateParams
 			}).success(function(data) {
-				// Update Div with success/error message
 				ParutoApp.stopLoading();
 				var msg;
 				if(data._success !== undefined) {
@@ -255,15 +321,7 @@ var ParutoApp = {
 			method: 'GET'
 		}).success(function(data) {
 			ParutoApp.stopLoading();
-			var msg;
-			if(data._success !== undefined) {
-				msg = data._success[data._success.length - 1];
-				ParutoApp.displayMessage(msg, 'success');
-				ParutoApp.ajaxNav(window.location.href);
-			} else if(data._error !== undefined) {
-				msg = data._error[data._error.length - 1];
-				ParutoApp.displayMessage(msg, 'error');
-			}
+			ParutoApp.handleRemoteData(data);
 		});
 		return false;
 	},
@@ -272,21 +330,24 @@ var ParutoApp = {
 		$.getJSON($(this).prop('href'))
 		.success(function(data) {
 			// ParutoApp.stopLoading();
-			var msg;
-			if(data._success !== undefined) {
-				msg = data._success[data._success.length - 1];
-				ParutoApp.displayMessage(msg, 'success');
-				ParutoApp.ajaxNav(window.location.href);
-			} else if(data._error !== undefined) {
-				msg = data._error[data._error.length - 1];
-				ParutoApp.displayMessage(msg, 'error');
-			}
+			ParutoApp.handleRemoteData(data);
 		})
 		.error(function(data) {
 			// ParutoApp.stopLoading();
 			console.log(data);
 		});
 		return false;
+	},
+	handleRemoteData: function(data) {
+		var msg;
+		if(data._success !== undefined) {
+			msg = data._success[data._success.length - 1];
+			ParutoApp.displayMessage(msg, 'success');
+			ParutoApp.ajaxNav(window.location.href);
+		} else if(data._error !== undefined) {
+			msg = data._error[data._error.length - 1];
+			ParutoApp.displayMessage(msg, 'error');
+		}
 	}
 	/*
 	createStories: function() {
@@ -300,5 +361,4 @@ var ParutoApp = {
 $(function() {
 	$(document).foundation();
 	ParutoApp.initializeApp();
-	ParutoApp.initializeAppAction();
 });
