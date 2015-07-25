@@ -65,6 +65,8 @@ class MY_Controller extends CI_Controller
         $this->_load_models();
         
         $this->data['statelist'] = [];
+
+        $this->data['logged_in_user'] = NULL;
         
         foreach($statelist = $this->state->get_all() as $i => $state) {
             if($i < count($statelist)/2) {

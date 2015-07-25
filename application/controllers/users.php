@@ -14,10 +14,13 @@ class Users extends MY_Controller {
         $this->asides['sidebar'] = "asides/activity";
     }
 
-    public function profile($uid) {
-        $this->data['this_user'] = $this->ion_auth->user($uid)->row();
-        $this->data['this_user_stories'] = $this->story->get_many_by(['user_id' => $uid]);
-        $this->data['this_user_profile'] = $this->profile->get_by(['user_id' => $uid]);
+    public function profile($uid = false) {
+        $this->data['user'] = $this->data['logged_in_user'];
+        if($uid != false) {
+            $this->data['user'] = $this->ion_auth->user($uid)->row();
+            $this->data['user_stories'] = $this->story->get_many_by(['user_id' => $uid]);
+            $this->data['profile'] = $this->profile->get_by(['user_id' => $uid]);
+        }
     }
 
     public function update() {

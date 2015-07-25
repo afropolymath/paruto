@@ -45,8 +45,26 @@
 | the active record class
 */
 
-$active_group = 'default';
+$active_group = 'development';
 $active_record = TRUE;
+
+$db['development'] = [
+    'hostname' => '127.0.0.1',
+    'username' => 'chilaxian',
+    'password' => 'cidman',
+    'database' => 'paruto',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => TRUE,
+    'db_debug' => TRUE,
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'autoinit' => TRUE,
+    'stricton' => FALSE 
+];
 
 if(isset($_SERVER['OPENSHIFT_MYSQL_DB_HOST'])) {
     define("DBHOST", $_SERVER['OPENSHIFT_MYSQL_DB_HOST']);
@@ -54,26 +72,7 @@ if(isset($_SERVER['OPENSHIFT_MYSQL_DB_HOST'])) {
     define("DBUSER", 'adminimJLYJd');
     define("DBPASS", 'Rk3eMmAg21CS');
     $active_group = 'staging';
-}
-$db = [
-    'development' => [
-        'hostname' => '127.0.0.1',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'paruto',
-        'dbdriver' => 'mysqli',
-        'dbprefix' => '',
-        'pconnect' => TRUE,
-        'db_debug' => TRUE,
-        'cache_on' => FALSE,
-        'cachedir' => '',
-        'char_set' => 'utf8',
-        'dbcollat' => 'utf8_general_ci',
-        'swap_pre' => '',
-        'autoinit' => TRUE,
-        'stricton' => FALSE 
-    ],
-    'staging' => [
+    $db['staging'] = [
         'hostname' => DBHOST,
         'username' => DBUSER,
         'password' => DBPASS,
@@ -89,8 +88,11 @@ $db = [
         'swap_pre' => '',
         'autoinit' => TRUE,
         'stricton' => FALSE 
-    ]
-];
+    ];
+}
+
+
+    
 
 
 /* End of file database.php */

@@ -1,8 +1,8 @@
 <h1 class="section-header">Create New Story</h1>
-<?= form_open('stories/create', ['id' => 'create-story-form']); ?>
+<?php echo form_open('stories/create', ['id' => 'create-story-form']); ?>
 <div class="form-create-errors hide"></div>
 <label for="headline" class="sr-label">Enter Headline</label>
-<input type="text" name="headline" value="<?= set_value('headline'); ?>" class="mt-form-control radius" id="headline" placeholder="Enter your headline"/>
+<input type="text" name="headline" value="<?php echo set_value('headline'); ?>" class="mt-form-control radius" id="headline" placeholder="Enter your headline"/>
 <div class="headline-error error-field hide"><ul></ul></div>
 <h2 class="sub-section-header">Location Information</h2>
 <label for="type">What state is this happening?</label>
@@ -51,7 +51,7 @@
 <!-- Location Finder -->
 
 <!-- a href="#" class="button small radius" id="find-location"><i class="fi-marker"></i>Use my current location</a>
-<div class="location-loader"><?= img('assets/img/activity.gif'); ?> <span class="txt">Loading location information...</span></div>
+<div class="location-loader"><?php echo img('assets/img/activity.gif'); ?> <span class="txt">Loading location information...</span></div>
 <div class="location-information hide"></div -->
 
 <!-- End Location Finder -->
@@ -76,8 +76,8 @@
 	</div>
 </div>
 <label for="story">Story Content</label>
-<textarea name="story" id="story" class="cke-repl"><?= set_value('content'); ?></textarea>
+<textarea name="story" id="story" class="cke-repl"><?php echo set_value('content'); ?></textarea>
 <div class="story-error error-field hide"><ul></ul></div>
 <p style="margin-top:1em"><input type="checkbox" name="anonymous" id="anonymous"/> Create as anonymous</p>
 <button type="submit" class="button paruto large radius" id="create-story" style="margin-top:1em">Publish Story</button>
-<?= form_close(); ?>
+<?php echo form_close(); ?>

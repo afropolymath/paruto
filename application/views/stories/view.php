@@ -1,13 +1,13 @@
 <div class="story-view">
-  <h1><?= ucwords($story->state) . " - " . $story->headline; ?></h1>
-  <? if($story->type === 'image'): ?><img src="<?= $story->image ?>"/><? endif ?>
-  <p><?= $story->story; ?></p>
+  <h1><?php echo ucwords($story->state) . " - " . $story->headline; ?></h1>
+  <?php if($story->type === 'image'): ?><img src="<?php echo $story->image ?>"/><?php endif ?>
+  <p><?php echo $story->story; ?></p>
   <div class="meta-information">
-    <div class="score"><?= "+" . $story->upvote; ?></div>
-    <div class="score"><?= "-" . $story->downvote; ?></div>
+    <div class="score"><?php echo "+" . $story->upvote; ?></div>
+    <div class="score"><?php echo "-" . $story->downvote; ?></div>
     <div class="avatar"></div>
     <div class="avatar-information">
-      <p class="poster"><em><?= $story->anonymous == 1 ? "Anonymous" : anchor('users/profile/'.$author->id, $author->username); ?></em> authored <?= time2str(strtotime($story->date_created), time()); ?></p>
+      <p class="poster"><em><?php echo $story->anonymous == 1 ? "Anonymous" : anchor('users/profile/'.$author->id, $author->username); ?></em> authored <?php echo time2str(strtotime($story->date_created), time()); ?></p>
     </div>
   </div>
   <div class="story-comments">
