@@ -27,23 +27,21 @@ class Users extends MY_Controller {
         $uid = $this->data['logged_in_user']->id;
         $profile = $this->data['profile'];
         if($this->input->post()) {
-            
             $post_obj = $this->input->post();
             $fields = ['first_name', 'last_name', 'username'];
             $user = [];
-
             foreach($fields as $field) {
                 $user[$field] = $post_obj[$field];
                 unset($post_obj[$field]);
             }
-
             if($this->user->update($uid, $user)) {
                 if(count(array_keys($post_obj)) > 0) {
                     $this->profile->update($profile->id, $post_obj);
                 }
                 $this->message->set('success', 'Successfully updated your profile.');
                 $this->activity->save_activity($uid, 'pupd');
-            } else {
+            }
+            else {
                 $this->message->set('error', 'Could not update your profile.');
             }
         }

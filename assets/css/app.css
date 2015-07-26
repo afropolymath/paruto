@@ -513,7 +513,7 @@ small.error {
 	line-height: 35px;
 }
 .actions .button.secondary {
-	background: #F6F6F6;
+	background: #FFF;
   border: solid 1px #dedede;
   border-radius: 3px;
   display: inline-block;
@@ -523,9 +523,8 @@ small.error {
   font-weight: 700;
   padding: 0 1.0em;
   height: 35px;
-  line-height: 35px;
+  line-height: 34px;
   text-decoration: none;
-  box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.07);
   margin-right: 5px;
 }
 .actions .button.secondary:hover {

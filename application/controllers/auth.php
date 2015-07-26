@@ -42,7 +42,6 @@ class Auth extends MY_Controller {
             $additional_data = ['first_name' => $this->input->post('first_name'), 'last_name' => $this->input->post('last_name')];
             $group = ['2'];
             if($uid = $this->ion_auth->register($username, $password, $email, $additional_data, $group)) {
-                // Create profile for the user if it doesn't already exist
                 if(!$this->profile->get_by(['user_id' => $uid])) {
                     $profile = ['user_id' => $uid];
                     $this->profile->insert($profile);
@@ -51,7 +50,8 @@ class Auth extends MY_Controller {
                     $this->message->set('success', $m);
                 }
                 redirect('auth/login');
-            } else {
+            }
+            else {
                 foreach($this->ion_auth->errors_array() as $m) {
                     $this->message->set('success', $m);
                 }

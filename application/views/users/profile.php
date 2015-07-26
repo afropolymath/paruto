@@ -22,10 +22,12 @@
 <h2>Recent from this user</h2>
 <?php if(isset($user_stories) && count($user_stories) > 0): ?>
   <?php foreach ($user_stories as $story): ?>
-    <div class="user-story">
-      <h3><?php echo $story->headline; ?></h3>
-      <?php echo anchor('stories/view/'.$story->id, "View Story &raquo;", ['class' => 'secondary button round']); ?>
-    </div>
+    <?php if($story->anonymous != 1): ?>
+      <div class="user-story">
+        <h3><?php echo $story->headline; ?></h3>
+        <?php echo anchor('stories/view/'.$story->id, "View Story &raquo;", ['class' => 'secondary button round']); ?>
+      </div>
+    <?php endif; ?>
   <?php endforeach; ?>
 <?php else: ?>
   <div class="alert-box info radius">This user has no recent stories.</div>

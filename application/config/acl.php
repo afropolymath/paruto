@@ -13,6 +13,7 @@ $config['acl'] = [
         'auth/register'     => 'Register',
         'auth/logout'       => 'Logout',
         'stories/index'     => 'Stream',
+        'stories/view'      => 'View Story',
         'users/profile'     => 'View User',
     ],
     // Administrator Specific Actions

@@ -115,8 +115,7 @@ var ParutoApp = {
 		        		lat: position.coords.latitude,
 		        		lng: position.coords.longitude
 		        	};
-		        	// Stop loading
-	    			$('.location-loader').children('.txt').text('Getting location data');
+		    			$('.location-loader').children('.txt').text('Getting location data');
 		        	// Parse location using Google Reverse Geocoding
 		        	$.ajax({
 		        		url: 'https://maps.googleapis.com/maps/api/geocode/json',
@@ -125,18 +124,16 @@ var ParutoApp = {
 		        			key: 'AIzaSyDWz0w-tYVP7iFwQ4qt2xR18UMuhm80mwk'
 		        		},
 		        		dataType: 'json'
-		        	}).success(function(data) {
-		    			$('.location-loader').hide();
-		    			$('#find-location').hide();
-		    			$('.location-information').show().html('<p>' + data.results[1].formatted_address + '</p>');
-		    			console.log(data);
+		        	})
+		        	.success(function(data) {
+			    			$('.location-loader').hide();
+			    			$('#find-location').hide();
+			    			$('.location-information').show().html('<p>' + data.results[1].formatted_address + '</p>');
+			    			console.log(data);
 		        	});
-		        	// Say successfully found location
 		        });
 		    } else {
-		    	// Say not supported
 	    		$('location-loader').hide();
-		        // exit gracefully
 		    }
 		    return false;
 		});
